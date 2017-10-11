@@ -26,9 +26,9 @@ const { expect } = chai;
 
 chai.use(chaiCron);
 
-expect('0 0 1,15 * *').to.be.a.cron();
+expect('0 0 1,15 * *').to.be.cron();
+expect('0 0 1,15 * *').to.be.cronTime();
 expect('0 0 1,15 * *').to.be.a.cronExpression();
-expect('0 0 1,15 * *').to.be.a.cronTime();
 expect('0 0 1,15 * *').to.be.a.cronTimeExpression();
 ```
 
