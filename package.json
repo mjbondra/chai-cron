@@ -17,7 +17,7 @@
     "cron-parser"
   ],
   "scripts": {
-    "test": "yarn run test:lint && yarn run test:unit && yarn run test:integration",
+    "test": "yarn test:lint && yarn test:unit && yarn test:integration",
     "test:integration": "mocha \"test/integration/**/*.js\"",
     "test:lint": "eslint \"**/*.js\"",
     "test:unit": "mocha \"test/unit/**/*.js\""
