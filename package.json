@@ -1,0 +1,43 @@
+{
+  "name": "chai-cron",
+  "version": "1.0.0",
+  "description": "chai assertion for cron time expressions",
+  "main": "lib/index.js",
+  "author": {
+    "name": "Michael J. Bondra",
+    "email": "mjbondra@gmail.com",
+    "url": "https://mjbondra.com/"
+  },
+  "license": "MIT",
+  "keywords": [
+    "chai",
+    "chai-plugin",
+    "cron",
+    "crontab",
+    "cron-parser"
+  ],
+  "scripts": {
+    "test": "yarn run test:lint && yarn run test:unit && yarn run test:integration",
+    "test:integration": "mocha \"test/integration/**/*.js\"",
+    "test:lint": "eslint \"**/*.js\"",
+    "test:unit": "mocha \"test/unit/**/*.js\""
+  },
+  "devDependencies": {
+    "camel-case": "^3.0.0",
+    "chai": "^4.1.2",
+    "dirty-chai": "^2.0.1",
+    "eslint": "^4.8.0",
+    "eslint-config-mjbondra": "^1.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "mocha": "^4.0.1",
+    "proxyquire": "^1.8.0",
+    "sinon": "^4.0.1",
+    "sinon-chai": "^2.14.0",
+    "yarn": "^1.2.0"
+  },
+  "dependencies": {
+    "cron-parser": "^2.4.2"
+  }
+}
