@@ -1,0 +1,29 @@
+image: node:latest
+
+cache:
+  paths:
+  - node_modules/
+
+stages:
+  - build
+  - test
+
+install:
+  stage: build
+  script:
+    - yarn
+
+lint:
+  stage: test
+  script:
+    - yarn test:lint
+
+unit-tests:
+  stage: test
+  script:
+    - yarn test:unit
+
+integration-tests:
+  stage: test
+  script:
+    - yarn test:integration
