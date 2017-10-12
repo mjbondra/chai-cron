@@ -17,10 +17,10 @@
     "cron-parser"
   ],
   "scripts": {
-    "test": "yarn test:lint && yarn test:unit && yarn test:integration",
-    "test:integration": "mocha \"test/integration/**/*.js\"",
-    "test:lint": "eslint \"**/*.js\"",
-    "test:unit": "mocha \"test/unit/**/*.js\""
+    "lint": "eslint \"**/*.js\"",
+    "test": "nyc mocha \"test/**/*.js\"",
+    "test:integration": "nyc mocha \"test/integration/**/*.js\"",
+    "test:unit": "nyc mocha \"test/unit/**/*.js\""
   },
   "devDependencies": {
     "camel-case": "^3.0.0",
@@ -32,6 +32,7 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "mocha": "^4.0.1",
+    "nyc": "^11.2.1",
     "proxyquire": "^1.8.0",
     "sinon": "^4.0.1",
     "sinon-chai": "^2.14.0",
