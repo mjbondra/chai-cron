@@ -7,23 +7,20 @@ cache:
 stages:
   - build
   - test
+  - coverage
+  - deploy
 
 install:
-  stage: build
   script:
     - yarn
+  stage: build
 
 lint:
-  stage: test
   script:
-    - yarn test:lint
+    - yarn lint
+  stage: test
 
-unit-tests:
-  stage: test
+test:
   script:
-    - yarn test:unit
-
-integration-tests:
+    - yarn test
   stage: test
-  script:
-    - yarn test:integration
