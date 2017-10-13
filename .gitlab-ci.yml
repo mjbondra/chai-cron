@@ -35,7 +35,7 @@ tag:
   only:
     - master
   script:
-    - export PKG_VERSION=$(git fetch | version)
+    - export PKG_VERSION=$(git tag | version)
     - npm version ${PKG_VERSION} -m "[ci skip] update version to %s"
     - git push --follow-tags
   stage: deploy
