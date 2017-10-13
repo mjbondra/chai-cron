@@ -7,6 +7,7 @@ cache:
 stages:
   - build
   - test
+  - deploy
 
 install:
   stage: build
@@ -18,12 +19,23 @@ lint:
   script:
     - yarn test:lint
 
-unit-tests:
+unit:
   stage: test
   script:
     - yarn test:unit
 
-integration-tests:
+integration:
   stage: test
   script:
     - yarn test:integration
+
+tag:
+  before_script:
+    - yarn global add @wondermonger/version
+  only:
+    - master
+  script:
+    - export PKG_VERSION=$(git tag | version)
+    - npm version ${PKG_VERSION} -m "[ci skip] update version to %s"
+    - git push --follow-tags
+  stage: deploy
