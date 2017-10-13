@@ -32,7 +32,8 @@ integration:
 tag:
   before_script:
     - yarn global add @wondermonger/version
-  only: master
+  only:
+    - master
   script:
     - export PKG_VERSION=$(git fetch | version)
     - npm version ${PKG_VERSION} -m "[ci skip] update version to %s"
