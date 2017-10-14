@@ -29,13 +29,21 @@ integration:
   script:
     - yarn test:integration
 
-tag:
+release:
   before_script:
-    - yarn global add @wondermonger/version
+    - git config --global user.email "${ACCESS_EMAIL}"
+    - git config --global user.name "${ACCESS_NAME}"
+    - yarn config set version-git-message "release v%s"
   only:
     - master
   script:
-    - export PKG_VERSION=$(git tag | version)
-    - npm version ${PKG_VERSION} -m "[ci skip] update version to %s"
-    - git push --follow-tags
+    - git checkout master
+    - yarn version --new-version patch
+    - yarn version --no-git-tag-version --new-version prerelease
+    - export PRERELEASE_VERSION=$(node -p "require('./package.json').version")
+    - git add package.json
+    - git commit -m "[ci skip] prerelease v${PRERELEASE_VERSION}"
+    - git push --follow-tags $CI_REPOSITORY_URL HEAD:$CI_COMMIT_REF_NAME
   stage: deploy
+  variables:
+    CI_REPOSITORY_URL: https://$ACCESS_USER:$ACCESS_TOKEN@gitlab.com/$CI_PROJECT_PATH.git
