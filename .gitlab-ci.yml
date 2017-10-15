@@ -49,9 +49,9 @@ release:
     CI_REPOSITORY_URL: https://$ACCESS_USER:$ACCESS_TOKEN@gitlab.com/$CI_PROJECT_PATH.git
 
 publish:
-  only:
-    - tags
+  # only:
+  #   - tags
   script:
-    - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
+    - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}">.npmrc
     - npm publish
   stage: deploy
