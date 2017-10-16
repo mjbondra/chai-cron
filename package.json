@@ -18,9 +18,9 @@
   ],
   "repository": "https://gitlab.com/wondermonger/chai-cron",
   "scripts": {
-    "test": "yarn test:lint && yarn test:unit && yarn test:integration",
+    "lint": "eslint \"**/*.js\"",
+    "test": "yarn test:unit && yarn test:integration",
     "test:integration": "mocha \"test/integration/**/*.js\"",
-    "test:lint": "eslint \"**/*.js\"",
     "test:unit": "mocha \"test/unit/**/*.js\""
   },
   "devDependencies": {
