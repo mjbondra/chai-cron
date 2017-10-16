@@ -14,20 +14,20 @@ before_script:
   - export PATH="$PATH:$(pwd)/shared-ci/bin"
 
 install:
-  stage: build
   script: wondermonger-ci-install
+  stage: build
 
 lint:
-  stage: test
   script: wondermonger-ci-lint
+  stage: test
 
 unit:
-  stage: test
   script: wondermonger-ci-unit-tests
+  stage: test
 
 integration:
-  stage: test
   script: wondermonger-ci-integration-tests
+  stage: test
 
 release:
   only:
