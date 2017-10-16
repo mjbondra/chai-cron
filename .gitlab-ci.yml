@@ -9,50 +9,34 @@ stages:
   - test
   - deploy
 
+before_script:
+  - git clone https://gitlab.com/wondermonger/shared-ci.git
+  - export PATH="$PATH:$(pwd)/shared-ci/bin"
+
 install:
   stage: build
-  script:
-    - yarn
+  script: wondermonger-ci-install
 
 lint:
   stage: test
-  script:
-    - yarn test:lint
+  script: wondermonger-ci-lint
 
 unit:
   stage: test
-  script:
-    - yarn test:unit
+  script: wondermonger-ci-unit-tests
 
 integration:
   stage: test
-  script:
-    - yarn test:integration
+  script: wondermonger-ci-integration-tests
 
 release:
-  before_script:
-    - git config --global user.email "${ACCESS_EMAIL}"
-    - git config --global user.name "${ACCESS_NAME}"
-    - yarn config set version-git-message "release v%s"
   only:
     - master
-  script:
-    - git checkout master
-    - yarn version --new-version patch
-    - yarn version --no-git-tag-version --new-version prerelease
-    - export PRERELEASE_VERSION=$(node -p "require('./package.json').version")
-    - git add package.json
-    - git commit -m "[ci skip] prerelease v${PRERELEASE_VERSION}"
-    - git push --follow-tags $CI_REPOSITORY_URL HEAD:$CI_COMMIT_REF_NAME
+  script: wondermonger-ci-release
   stage: deploy
-  variables:
-    CI_REPOSITORY_URL: https://$ACCESS_USER:$ACCESS_TOKEN@gitlab.com/$CI_PROJECT_PATH.git
 
 publish:
-  before_script:
-    - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
   only:
     - tags
-  script:
-    - npm publish
+  script: wondermonger-ci-publish
   stage: deploy
