@@ -16,7 +16,10 @@
     "crontab",
     "cron-parser"
   ],
-  "repository": "https://gitlab.com/wondermonger/chai-cron",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/wondermonger/chai-cron.git"
+  },
   "scripts": {
     "lint": "eslint \"**/*.js\"",
     "test": "yarn test:unit && yarn test:integration",
