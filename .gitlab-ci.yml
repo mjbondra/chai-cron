@@ -12,31 +12,33 @@ stages:
 before_script:
   - git clone https://gitlab.com/wondermonger/shared-ci.git
   - export PATH="$PATH:$(pwd)/shared-ci/bin"
+  - ci-ssh-private-key
+  - ci-git-config
 
 install:
-  script: wondermonger-ci-install
+  script: ci-install
   stage: build
 
 lint:
-  script: wondermonger-ci-lint
+  script: ci-lint
   stage: test
 
 unit:
-  script: wondermonger-ci-unit-tests
+  script: ci-unit-tests
   stage: test
 
 integration:
-  script: wondermonger-ci-integration-tests
+  script: ci-integration-tests
   stage: test
 
 release:
   only:
     - master
-  script: wondermonger-ci-release
+  script: ci-release
   stage: deploy
 
 publish:
   only:
     - tags
-  script: wondermonger-ci-publish
+  script: ci-publish
   stage: deploy
