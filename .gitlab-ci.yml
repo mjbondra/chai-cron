@@ -1,44 +1,49 @@
-image: node:latest
-
-cache:
-  paths:
-  - node_modules/
+image: wondermonger/ci-tools:latest
 
 stages:
   - build
   - test
   - deploy
 
-before_script:
-  - git clone https://gitlab.com/wondermonger/shared-ci.git
-  - export PATH="$PATH:$(pwd)/shared-ci/bin"
-  - ci-ssh-private-key
-  - ci-git-config
-
 install:
-  script: ci-install
+  artifacts:
+    paths:
+      - node_modules/
+  script: ci-node-install
   stage: build
 
 lint:
-  script: ci-lint
+  dependencies:
+    - install
+  script: ci-node-lint
   stage: test
 
 unit:
-  script: ci-unit-tests
+  dependencies:
+    - install
+  script: ci-node-unit-tests
   stage: test
 
 integration:
-  script: ci-integration-tests
+  dependencies:
+    - install
+  script: ci-node-integration-tests
   stage: test
 
 release:
+  dependencies:
+    - install
   only:
     - master
-  script: ci-release
+  script:
+    - ci-git-config
+    - ci-git-node-release
   stage: deploy
 
 publish:
+  dependencies:
+    - install
   only:
     - tags
-  script: ci-publish
+  script: ci-node-publish
   stage: deploy
