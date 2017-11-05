@@ -1,9 +1,5 @@
 image: wondermonger/ci-tools:latest
 
-cache:
-  key: "$CI_COMMIT_REF_NAME"
-  untracked: true
-
 stages:
   - build
   - test
