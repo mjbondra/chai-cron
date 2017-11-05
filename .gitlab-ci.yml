@@ -1,8 +1,8 @@
 image: wondermonger/ci-tools:latest
 
 cache:
-  paths:
-  - node_modules/
+  key: "$CI_COMMIT_REF_NAME"
+  untracked: true
 
 stages:
   - build
@@ -28,7 +28,7 @@ integration:
 release:
   only:
     - master
-  script: 
+  script:
     - ci-git-config
     - ci-git-node-release
   stage: deploy
