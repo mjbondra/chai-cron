@@ -304,8 +304,8 @@ eslint-config-standard@^10.2.0:
   resolved "https://registry.yarnpkg.com/eslint-config-standard/-/eslint-config-standard-10.2.1.tgz#c061e4d066f379dc17cd562c64e819b4dd454591"
 
 eslint-config-wondermonger@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/eslint-config-wondermonger/-/eslint-config-wondermonger-1.0.3.tgz#de6c9d4d5dee8927d57a1aeb23f27787d2399409"
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/eslint-config-wondermonger/-/eslint-config-wondermonger-1.0.5.tgz#c29f01488cc46e5612d59c6df9623a10388e4e73"
   dependencies:
     eslint-config-standard "^10.2.0"
 
