@@ -1,6 +1,6 @@
 {
   "name": "chai-cron",
-  "version": "1.0.15",
+  "version": "1.0.16-0",
   "description": "chai assertion for cron time expressions",
   "main": "lib/index.js",
   "author": {
