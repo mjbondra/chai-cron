@@ -1,5 +1,7 @@
 # chai-cron
 
+[![pipeline status](https://gitlab.com/wondermonger/chai-cron/badges/0/pipeline.svg)](https://gitlab.com/wondermonger/chai-cron/pipelines/0) [![coverage report](https://gitlab.com/wondermonger/chai-cron/badges/0/coverage.svg)](https://wondermonger.gitlab.io/-/chai-cron/-/jobs/0/artifacts/coverage/index.html)
+
 Cron time expression assertion plugin for the [Chai Assertion Library](http://chaijs.com/).
 
 Powered by [cron-parser](https://github.com/harrisiirak/cron-parser).
